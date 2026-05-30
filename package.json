@@ -76,6 +76,7 @@
 		"vitest-browser-svelte": "^2.1.0"
 	},
 	"dependencies": {
+		"@fontsource/poppins": "^5.2.7",
 		"@tanstack/svelte-hotkeys": "^0.10.0",
 		"@tanstack/svelte-query": "^6.1.33",
 		"@tanstack/svelte-table": "^9.0.0-alpha.51",
