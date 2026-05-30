@@ -1,6 +1,11 @@
 node_modules
 .vscode
 
+# AGENTS
+.agents/
+.gemini
+.opencode
+
 # Output
 .output
 .vercel
@@ -28,3 +33,5 @@ docs/
 CLAUDE.md
 GEMINI.md
 AGENTS.md
+# Playwright
+test-results
