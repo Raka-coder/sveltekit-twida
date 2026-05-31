@@ -1,9 +1,12 @@
-import { mysqlTable, serial, int, text } from 'drizzle-orm/mysql-core';
+import { mysqlTable, bigint, int, text, varchar, boolean, timestamp } from 'drizzle-orm/mysql-core';
 
 export const task = mysqlTable('task', {
-	id: serial('id').primaryKey(),
+	id: bigint('id', { mode: 'number', unsigned: true }).primaryKey().autoincrement(),
 	title: text('title').notNull(),
-	priority: int('priority').notNull().default(1)
+	completed: boolean('completed').notNull().default(false),
+	priority: int('priority').notNull().default(1),
+	userId: varchar('userId', { length: 36 }).notNull(),
+	createdAt: timestamp('createdAt').notNull().defaultNow()
 });
 
 export * from './auth.schema';
