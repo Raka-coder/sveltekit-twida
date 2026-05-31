@@ -95,14 +95,14 @@
 			</Sidebar.Menu>
 			{#if filtersOpen}
 				<Sidebar.Menu>
-					{#each filterItems as { title, value, icon } (value)}
+					{#each filterItems as item (item.value)}
 						<Sidebar.MenuItem>
 							<Sidebar.MenuButton
-								onclick={() => setFilter(value)}
-								isActive={filterStatus === value}
+								onclick={() => setFilter(item.value)}
+								isActive={filterStatus === item.value}
 							>
-								<icon></icon>
-								<span>{title}</span>
+								<item.icon></item.icon>
+								<span>{item.title}</span>
 							</Sidebar.MenuButton>
 						</Sidebar.MenuItem>
 					{/each}
