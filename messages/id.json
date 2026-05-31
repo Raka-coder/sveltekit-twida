@@ -71,5 +71,12 @@
   "new_password_placeholder": "Minimal 8 karakter",
   "password_minlength": "Kata sandi minimal 8 karakter",
   "failed_change_password": "Gagal mengubah kata sandi",
-  "password_changed": "Kata sandi berhasil diubah!"
+  "password_changed": "Kata sandi berhasil diubah!",
+  "login_button": "Masuk",
+  "or": "atau",
+  "has_account": "Sudah punya akun?",
+  "login_link": "Masuk",
+  "create_account": "Buat Akun",
+  "login_subtitle": "Selamat datang kembali. Silakan masuk ke akun kamu.",
+  "register_subtitle": "Mulai atur tugas kamu hari ini juga."
 }
