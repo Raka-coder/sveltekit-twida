@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$paraglide/messages';
 	import AuthCard from '$lib/components/auth/auth-card.svelte';
 	import RegisterForm from '$lib/components/auth/register-form.svelte';
 	import type { ActionData } from './$types';
@@ -7,9 +8,9 @@
 </script>
 
 <svelte:head>
-	<title>Register — Todo App</title>
+	<title>{m.register_title()} — {m.app_name()}</title>
 </svelte:head>
 
-<AuthCard badge="Daftar" title="Buat akun baru" subtitle="Mulai catat tugas kamu" gradientSide="right">
+<AuthCard badge={m.register_title()} title={m.register_title()} subtitle={m.register_subtitle()} gradientSide="right">
 	<RegisterForm {form} />
 </AuthCard>

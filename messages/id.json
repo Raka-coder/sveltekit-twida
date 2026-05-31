@@ -16,7 +16,9 @@
   "tech_stack": "SvelteKit 5 · Better-Auth · Drizzle ORM",
   "sign_out": "Keluar",
   "login_title": "Masuk",
+  "login_subtitle": "Selamat datang kembali. Silakan masuk ke akun kamu.",
   "register_title": "Buat Akun",
+  "register_subtitle": "Mulai atur tugas kamu hari ini juga.",
   "dashboard_title": "Dasbor",
   "welcome": "Selamat datang {name}",
   "email": "Email",
@@ -76,7 +78,5 @@
   "or": "atau",
   "has_account": "Sudah punya akun?",
   "login_link": "Masuk",
-  "create_account": "Buat Akun",
-  "login_subtitle": "Selamat datang kembali. Silakan masuk ke akun kamu.",
-  "register_subtitle": "Mulai atur tugas kamu hari ini juga."
+  "create_account": "Buat Akun"
 }

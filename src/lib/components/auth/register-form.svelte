@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$paraglide/messages';
 	import { enhance } from '$app/forms';
 	import { resolveRoute } from '$app/paths';
 	import { Button } from '$lib/components/ui/button';
@@ -14,7 +15,7 @@
 
 <form method="post" action="?/signUpEmail" use:enhance class="flex flex-col gap-6">
 	<div>
-		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="name">Nama</label>
+		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="name">{m.name_label()}</label>
 		<input
 			id="name"
 			name="name"
@@ -24,7 +25,7 @@
 		/>
 	</div>
 	<div>
-		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="email">Email</label>
+		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="email">{m.email()}</label>
 		<input
 			id="email"
 			type="email"
@@ -35,7 +36,7 @@
 		/>
 	</div>
 	<div>
-		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="password">Password</label>
+		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="password">{m.password()}</label>
 		<input
 			id="password"
 			type="password"
@@ -49,13 +50,13 @@
 		<p class="text-xs text-destructive">{error}</p>
 	{/if}
 	<Button type="submit" class="mt-2 w-full py-5 text-sm font-medium tracking-wide">
-		Buat Akun
+		{m.create_account()}
 	</Button>
 </form>
 
 <p class="mt-8 text-center text-xs text-muted-foreground/60">
-	Sudah punya akun?&nbsp;
-	<a href={resolveRoute('/login')} class="font-medium text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition hover:decoration-primary/60">Masuk</a>
+	{m.has_account()}&nbsp;
+	<a href={resolveRoute('/login')} class="font-medium text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition hover:decoration-primary/60">{m.login_link()}</a>
 </p>
 
 {#if form?.message}
