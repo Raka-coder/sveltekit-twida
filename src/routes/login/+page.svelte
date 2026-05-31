@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$paraglide/messages';
 	import AuthCard from '$lib/components/auth/auth-card.svelte';
 	import LoginForm from '$lib/components/auth/login-form.svelte';
 	import type { ActionData } from './$types';
@@ -7,9 +8,9 @@
 </script>
 
 <svelte:head>
-	<title>Login — Todo App</title>
+	<title>{m.login_title()} — {m.app_name()}</title>
 </svelte:head>
 
-<AuthCard badge="Masuk" title="Welcome back" subtitle="Silakan masuk ke akun kamu" gradientSide="left">
+<AuthCard badge={m.login_title()} title={m.login_title()} subtitle={m.login_subtitle()} gradientSide="left">
 	<LoginForm {form} />
 </AuthCard>

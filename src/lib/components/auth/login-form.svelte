@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$paraglide/messages';
 	import { enhance } from '$app/forms';
 	import { resolveRoute } from '$app/paths';
 	import { Button } from '$lib/components/ui/button';
@@ -19,7 +20,7 @@
 
 <form method="post" action="?/signInEmail" use:enhance class="flex flex-col gap-6">
 	<div>
-		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="email">Email</label>
+		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="email">{m.email()}</label>
 		<input
 			id="email"
 			type="email"
@@ -30,7 +31,7 @@
 		/>
 	</div>
 	<div class="relative">
-		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="password">Password</label>
+		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="password">{m.password()}</label>
 		<div class="relative">
 			<input
 				id="password"
@@ -57,12 +58,12 @@
 		<p class="text-xs text-destructive">{error}</p>
 	{/if}
 	<Button type="submit" class="mt-2 w-full py-5 text-sm font-medium tracking-wide">
-		Masuk
+		{m.login_button()}
 	</Button>
 </form>
 
 <div class="divider-decorative my-8">
-	<span class="text-[10px] font-medium tracking-widest text-muted-foreground/50 uppercase">atau</span>
+	<span class="text-[10px] font-medium tracking-widest text-muted-foreground/50 uppercase">{m.or()}</span>
 </div>
 
 <form method="post" action="?/signInSocial" use:enhance>
@@ -72,8 +73,8 @@
 </form>
 
 <p class="mt-8 text-center text-xs text-muted-foreground/60">
-	Belum punya akun?&nbsp;
-	<a href={resolveRoute('/register')} class="font-medium text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition hover:decoration-primary/60">Daftar</a>
+	{m.no_account()}&nbsp;
+	<a href={resolveRoute('/register')} class="font-medium text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition hover:decoration-primary/60">{m.register_link()}</a>
 </p>
 
 {#if form?.message}

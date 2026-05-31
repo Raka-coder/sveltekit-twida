@@ -16,7 +16,9 @@
   "tech_stack": "SvelteKit 5 · Better-Auth · Drizzle ORM",
   "sign_out": "Sign Out",
   "login_title": "Sign In",
+  "login_subtitle": "Welcome back. Sign in to your account.",
   "register_title": "Create Account",
+  "register_subtitle": "Start organizing your tasks today.",
   "dashboard_title": "Dashboard",
   "welcome": "Welcome {name}",
   "email": "Email",
@@ -76,7 +78,5 @@
   "or": "or",
   "has_account": "Already have an account?",
   "login_link": "Sign In",
-  "create_account": "Create Account",
-  "login_subtitle": "Welcome back. Sign in to your account.",
-  "register_subtitle": "Start organizing your tasks today."
+  "create_account": "Create Account"
 }

@@ -16,7 +16,9 @@
   "tech_stack": "SvelteKit 5 · Better-Auth · Drizzle ORM",
   "sign_out": "Abmelden",
   "login_title": "Anmelden",
+  "login_subtitle": "Willkommen zurück. Melde dich in deinem Konto an.",
   "register_title": "Konto Erstellen",
+  "register_subtitle": "Beginne noch heute, deine Aufgaben zu organisieren.",
   "dashboard_title": "Dashboard",
   "welcome": "Willkommen {name}",
   "email": "E-Mail",
@@ -76,7 +78,5 @@
   "or": "oder",
   "has_account": "Bereits ein Konto?",
   "login_link": "Anmelden",
-  "create_account": "Konto Erstellen",
-  "login_subtitle": "Willkommen zurück. Melde dich in deinem Konto an.",
-  "register_subtitle": "Beginne noch heute, deine Aufgaben zu organisieren."
+  "create_account": "Konto Erstellen"
 }
