@@ -5,8 +5,8 @@ export const task = mysqlTable('task', {
 	title: text('title').notNull(),
 	completed: boolean('completed').notNull().default(false),
 	priority: int('priority').notNull().default(1),
-	userId: varchar('userId', { length: 36 }).notNull(),
-	createdAt: timestamp('createdAt').notNull().defaultNow()
+	userId: varchar('user_id', { length: 36 }).notNull(),
+	createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
 export * from './auth.schema';

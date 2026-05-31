@@ -1,47 +1,18 @@
 <script lang="ts">
-	import ListTodo from '@lucide/svelte/icons/list-todo';
-	import Clock from '@lucide/svelte/icons/clock';
-	import CheckCheck from '@lucide/svelte/icons/check-check';
-
-	let {
-		total = 0,
-		pending = 0,
-		completed = 0
-	}: {
-		total: number;
-		pending: number;
-		completed: number;
-	} = $props();
+	let { total, pending, completed }: { total: number; pending: number; completed: number } = $props();
 </script>
 
-<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-	<div class="card-elevated flex items-center gap-4 p-5">
-		<div class="flex size-10 items-center justify-center rounded-lg bg-primary/10">
-			<ListTodo class="size-5 text-primary" />
-		</div>
-		<div>
-			<p class="text-2xl font-semibold">{total}</p>
-			<p class="text-xs text-muted-foreground">Total Tasks</p>
-		</div>
+<div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+	<div class="card-elevated flex flex-col justify-between p-5 transition-transform hover:scale-[1.02]">
+		<div class="text-[10px] font-bold tracking-widest text-muted-foreground/50 uppercase">Total Tasks</div>
+		<div class="mt-2 font-display text-3xl font-bold">{total}</div>
 	</div>
-
-	<div class="card-elevated flex items-center gap-4 p-5">
-		<div class="flex size-10 items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-900/20">
-			<Clock class="size-5 text-orange-600 dark:text-orange-400" />
-		</div>
-		<div>
-			<p class="text-2xl font-semibold">{pending}</p>
-			<p class="text-xs text-muted-foreground">Pending</p>
-		</div>
+	<div class="card-elevated flex flex-col justify-between border-primary/20 bg-primary/3 p-5 transition-transform hover:scale-[1.02]">
+		<div class="text-[10px] font-bold tracking-widest text-primary/70 uppercase">Pending</div>
+		<div class="mt-2 font-display text-3xl font-bold text-primary">{pending}</div>
 	</div>
-
-	<div class="card-elevated flex items-center gap-4 p-5">
-		<div class="flex size-10 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/20">
-			<CheckCheck class="size-5 text-green-600 dark:text-green-400" />
-		</div>
-		<div>
-			<p class="text-2xl font-semibold">{completed}</p>
-			<p class="text-xs text-muted-foreground">Completed</p>
-		</div>
+	<div class="card-elevated flex flex-col justify-between p-5 transition-transform hover:scale-[1.02]">
+		<div class="text-[10px] font-bold tracking-widest text-emerald-500/70 uppercase">Completed</div>
+		<div class="mt-2 font-display text-3xl font-bold text-emerald-500">{completed}</div>
 	</div>
 </div>
