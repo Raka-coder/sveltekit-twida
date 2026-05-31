@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import * as Sidebar from '$lib/components/ui/sidebar';
+	import { m } from '$paraglide/messages.js';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import ListChecks from '@lucide/svelte/icons/list-checks';
 	import Tag from '@lucide/svelte/icons/tag';
@@ -25,7 +26,7 @@
 						<ListChecks class="size-4" />
 					</div>
 					<div class="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
-						<span class="truncate font-semibold">Todo App</span>
+						<span class="truncate font-semibold">{m.app_name()}</span>
 						<span class="truncate text-xs text-muted-foreground/60">{email}</span>
 					</div>
 				</Sidebar.MenuButton>
@@ -35,27 +36,27 @@
 
 	<Sidebar.Content>
 		<Sidebar.Group>
-			<Sidebar.GroupLabel>Navigation</Sidebar.GroupLabel>
+			<Sidebar.GroupLabel>{m.navigation()}</Sidebar.GroupLabel>
 			<Sidebar.Menu>
 				<Sidebar.MenuItem>
-					<Sidebar.MenuButton isActive={true} tooltipContent="Dashboard">
+					<Sidebar.MenuButton isActive={true} tooltipContent={m.dashboard_title()}>
 						<ListChecks class="size-4" />
-						<span class="group-data-[collapsible=icon]:hidden">Dashboard</span>
+						<span class="group-data-[collapsible=icon]:hidden">{m.dashboard_title()}</span>
 					</Sidebar.MenuButton>
 				</Sidebar.MenuItem>
 			</Sidebar.Menu>
 		</Sidebar.Group>
 
 		<Sidebar.Group>
-			<Sidebar.GroupLabel>Organization</Sidebar.GroupLabel>
+			<Sidebar.GroupLabel>{m.organization()}</Sidebar.GroupLabel>
 			<Sidebar.Menu>
 				<Collapsible.Root bind:open={filtersOpen} class="group/collapsible">
 					<Sidebar.MenuItem>
 						<Collapsible.Trigger>
 							{#snippet child({ props }: { props: Record<string, unknown> })}
-								<Sidebar.MenuButton {...props} tooltipContent="Filters">
+								<Sidebar.MenuButton {...props} tooltipContent={m.filters()}>
 									<Tag class="size-4" />
-									<span class="group-data-[collapsible=icon]:hidden">Filters</span>
+									<span class="group-data-[collapsible=icon]:hidden">{m.filters()}</span>
 									<ChevronDown
 										class="ml-auto size-3 transition-transform group-data-[state=open]/collapsible:rotate-180 group-data-[collapsible=icon]:hidden"
 									/>
@@ -69,7 +70,7 @@
 										isActive={filterStatus === 'all'}
 										onclick={() => filterStatus = 'all'}
 									>
-										All Tasks
+										{m.all_tasks()}
 									</Sidebar.MenuSubButton>
 								</Sidebar.MenuSubItem>
 								<Sidebar.MenuSubItem>
@@ -77,7 +78,7 @@
 										isActive={filterStatus === 'pending'}
 										onclick={() => filterStatus = 'pending'}
 									>
-										Pending
+										{m.pending()}
 									</Sidebar.MenuSubButton>
 								</Sidebar.MenuSubItem>
 								<Sidebar.MenuSubItem>
@@ -85,7 +86,7 @@
 										isActive={filterStatus === 'completed'}
 										onclick={() => filterStatus = 'completed'}
 									>
-										Completed
+										{m.completed()}
 									</Sidebar.MenuSubButton>
 								</Sidebar.MenuSubItem>
 							</Sidebar.MenuSub>

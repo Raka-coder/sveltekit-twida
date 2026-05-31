@@ -2,6 +2,7 @@
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
+	import { m } from '$paraglide/messages.js';
 	import X from '@lucide/svelte/icons/x';
 
 	let { task, onToggle, onDelete }: { 
@@ -27,7 +28,7 @@
 		{task.title}
 	</span>
 	<Badge variant={task.completed ? 'secondary' : 'default'} class="shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-tight sm:text-xs">
-		{task.completed ? 'Done' : 'Pending'}
+		{task.completed ? m.done() : m.pending()}
 	</Badge>
 	<Button
 		variant="ghost"

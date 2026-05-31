@@ -4,6 +4,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Button } from '$lib/components/ui/button';
+	import { m } from '$paraglide/messages.js';
 
 	let {
 		open = $bindable(false),
@@ -56,14 +57,14 @@
 
 			if (!res.ok) {
 				const data = await res.json();
-				error = data.message || 'Failed to update profile';
+				error = data.message || m.failed_update();
 				return;
 			}
 
 			success = true;
 			setTimeout(() => window.location.reload(), 800);
 		} catch {
-			error = 'An unexpected error occurred';
+			error = m.unexpected_error();
 		} finally {
 			isSaving = false;
 		}
@@ -73,8 +74,8 @@
 <Dialog.Root bind:open onOpenChange={(o) => { if (!o) onClose(); }}>
 	<Dialog.Content class="sm:max-w-sm">
 		<Dialog.Header>
-			<Dialog.Title>Edit Profile</Dialog.Title>
-			<Dialog.Description>Update your display name.</Dialog.Description>
+			<Dialog.Title>{m.edit_profile()}</Dialog.Title>
+			<Dialog.Description>{m.edit_profile_desc()}</Dialog.Description>
 		</Dialog.Header>
 
 		<form onsubmit={handleSubmit} class="flex flex-col gap-6">
@@ -86,17 +87,17 @@
 			</div>
 
 			<div class="space-y-2">
-				<Label for="profile-name">Name</Label>
+				<Label for="profile-name">{m.name_label()}</Label>
 				<Input
 					id="profile-name"
 					type="text"
 					bind:value={name}
-					placeholder="Your name"
+					placeholder={m.name_placeholder()}
 					required
 					minlength={2}
 				/>
 				{#if name.trim().length > 0 && name.trim().length < 2}
-					<p class="text-xs text-destructive">Name must be at least 2 characters</p>
+					<p class="text-xs text-destructive">{m.name_minlength()}</p>
 				{/if}
 			</div>
 
@@ -105,12 +106,12 @@
 			{/if}
 
 			{#if success}
-				<p class="text-xs text-green-600 dark:text-green-400">Profile updated! Refreshing...</p>
+				<p class="text-xs text-green-600 dark:text-green-400">{m.profile_updated()}</p>
 			{/if}
 
 			<Dialog.Footer>
 				<Button type="submit" disabled={!isValid || isSaving}>
-					{isSaving ? 'Saving...' : 'Save'}
+					{isSaving ? m.saving() : m.save()}
 				</Button>
 			</Dialog.Footer>
 		</form>

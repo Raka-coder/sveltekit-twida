@@ -3,6 +3,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar';
 	import AppSidebar from '$lib/components/dashboard/app-sidebar.svelte';
 	import DashboardHeader from '$lib/components/dashboard/dashboard-header.svelte';
+	import { m } from '$paraglide/messages.js';
 	import Stats from '$lib/components/dashboard/stats.svelte';
 	import TaskForm from '$lib/components/dashboard/task-form.svelte';
 	import TaskItem from '$lib/components/dashboard/task-item.svelte';
@@ -100,7 +101,7 @@
 </script>
 
 <svelte:head>
-	<title>Dashboard — Todo App</title>
+	<title>{m.dashboard_title()} — {m.app_name()}</title>
 </svelte:head>
 
 <Sidebar.Provider>
