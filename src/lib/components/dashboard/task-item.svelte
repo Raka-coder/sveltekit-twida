@@ -6,26 +6,26 @@
 
 	let {
 		task,
-		onToggle = (_completed: boolean) => {},
+		onToggle = () => {},
 		onDelete = () => {}
 	}: {
-		task: { id: number; title: string; completed: boolean; priority: number };
+		task: { title: string; completed: boolean; priority: number };
 		onToggle: (completed: boolean) => void;
 		onDelete: () => void;
 	} = $props();
 
-	let initialized = $state(false);
 	let checked = $state(false);
+	let inited = $state(false);
 
 	$effect(() => {
-		if (!initialized) {
+		if (!inited) {
 			checked = task.completed;
-			initialized = true;
+			inited = true;
 		}
 	});
 
 	$effect(() => {
-		if (checked !== task.completed) {
+		if (inited && checked !== task.completed) {
 			onToggle(checked);
 		}
 	});
@@ -34,7 +34,7 @@
 <div
 	class="group flex items-center gap-3 border-b border-border/40 px-1 py-3 transition-colors hover:bg-muted/30"
 >
-	<Checkbox bind:checked /> 
+	<Checkbox bind:checked />
 
 	<span
 		class="flex-1 text-sm transition-all {checked

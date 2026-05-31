@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { Button } from '$lib/components/ui/button';
 </script>
 
@@ -36,7 +37,7 @@
 			</Button>
 			<p class="text-center text-xs text-muted-foreground/60">
 				Belum punya akun?
-				<a href="/register" class="font-medium text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition hover:decoration-primary/60">Daftar</a>
+				<a href={resolve("/register")} class="font-medium text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition hover:decoration-primary/60">Daftar</a>
 			</p>
 		</div>
 
