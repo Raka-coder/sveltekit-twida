@@ -3,6 +3,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Button } from '$lib/components/ui/button';
+	import { m } from '$paraglide/messages.js';
 
 	let {
 		open = $bindable(false),
@@ -21,7 +22,7 @@
 	let isValid = $derived(currentPassword.length > 0 && newPassword.length >= 8);
 	let passwordError = $derived(
 		newPassword.length > 0 && newPassword.length < 8
-			? 'Password must be at least 8 characters'
+			? m.password_minlength()
 			: ''
 	);
 
@@ -46,14 +47,14 @@
 
 			if (!res.ok) {
 				const data = await res.json();
-				error = data.message || 'Failed to change password';
+				error = data.message || m.failed_change_password();
 				return;
 			}
 
 			success = true;
 			clearFields();
 		} catch {
-			error = 'An unexpected error occurred';
+			error = m.unexpected_error();
 		} finally {
 			isSaving = false;
 		}
@@ -63,29 +64,29 @@
 <Dialog.Root bind:open onOpenChange={(o) => { if (!o) onClose(); }}>
 	<Dialog.Content class="sm:max-w-sm">
 		<Dialog.Header>
-			<Dialog.Title>Change Password</Dialog.Title>
-			<Dialog.Description>Update your account password.</Dialog.Description>
+			<Dialog.Title>{m.change_password()}</Dialog.Title>
+			<Dialog.Description>{m.change_password_desc()}</Dialog.Description>
 		</Dialog.Header>
 
 		<form onsubmit={handleSubmit} class="flex flex-col gap-5">
 			<div class="space-y-2">
-				<Label for="current-password">Current Password</Label>
+				<Label for="current-password">{m.current_password()}</Label>
 				<Input
 					id="current-password"
 					type="password"
 					bind:value={currentPassword}
-					placeholder="Enter current password"
+					placeholder={m.current_password_placeholder()}
 					required
 				/>
 			</div>
 
 			<div class="space-y-2">
-				<Label for="new-password">New Password</Label>
+				<Label for="new-password">{m.new_password()}</Label>
 				<Input
 					id="new-password"
 					type="password"
 					bind:value={newPassword}
-					placeholder="At least 8 characters"
+					placeholder={m.new_password_placeholder()}
 					required
 					minlength={8}
 				/>
@@ -99,12 +100,12 @@
 			{/if}
 
 			{#if success}
-				<p class="text-xs text-green-600 dark:text-green-400">Password changed successfully!</p>
+				<p class="text-xs text-green-600 dark:text-green-400">{m.password_changed()}</p>
 			{/if}
 
 			<Dialog.Footer>
 				<Button type="submit" disabled={!isValid || isSaving}>
-					{isSaving ? 'Saving...' : 'Change Password'}
+					{isSaving ? m.saving() : m.change_password()}
 				</Button>
 			</Dialog.Footer>
 		</form>

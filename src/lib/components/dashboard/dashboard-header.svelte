@@ -3,6 +3,8 @@
 	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
 	import * as Sidebar from '$lib/components/ui/sidebar';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import { m } from '$paraglide/messages.js';
+	import LocaleSwitcher from './locale-switcher.svelte';
 	import LogOut from '@lucide/svelte/icons/log-out';
 	import User from '@lucide/svelte/icons/user';
 	import Settings from '@lucide/svelte/icons/settings';
@@ -26,25 +28,28 @@
 		} = $props();
 </script>
 
-<header class="flex h-16 shrink-0 items-center justify-between border-b bg-card px-4 sm:px-6">
-	<div class="flex items-center gap-2 sm:gap-3 min-w-0">
+<header class="flex h-16 shrink-0 items-center justify-between border-b bg-card px-3 sm:px-6">
+	<div class="flex items-center gap-2 sm:gap-4 min-w-0">
 		<Sidebar.Trigger class="-ml-1" />
-		<Separator orientation="vertical" class="mr-2 h-4" />
-		<div class="min-w-0">
-			<h1 class="font-display text-base font-semibold leading-tight sm:text-lg truncate">My Tasks</h1>
-			<p class="truncate text-[10px] text-muted-foreground/60 sm:text-xs">
-				{totalCount} task{totalCount !== 1 ? 's' : ''}, {pendingCount} pending
+		<Separator orientation="vertical" class="h-4 opacity-50" />
+		<div class="min-w-0 flex flex-col justify-center">
+			<h1 class="font-display text-sm font-bold leading-none sm:text-lg truncate">{m.my_tasks()}</h1>
+			<p class="truncate text-[10px] leading-tight text-muted-foreground/60 sm:text-xs sm:mt-0.5">
+				{m.total_and_pending({ total: totalCount, pending: pendingCount })}
 			</p>
 		</div>
 	</div>
 
-	<DropdownMenu.Root>
-		<DropdownMenu.Trigger class="rounded-full ring-primary/10 transition-shadow hover:ring-4">
-			<Avatar class="size-8 shrink-0 ring-2 ring-primary/10">
-				<AvatarImage src={user.image ?? ''} alt={user.name} />
-				<AvatarFallback class="text-xs sm:text-sm">{initials}</AvatarFallback>
-			</Avatar>
-		</DropdownMenu.Trigger>
+	<div class="flex items-center gap-2 sm:gap-4">
+		<LocaleSwitcher />
+
+		<DropdownMenu.Root>
+			<DropdownMenu.Trigger class="rounded-full ring-primary/10 transition-all hover:ring-4 active:scale-95">
+				<Avatar class="size-8 shrink-0 ring-2 ring-primary/10 sm:size-9">
+					<AvatarImage src={user.image ?? ''} alt={user.name} />
+					<AvatarFallback class="text-[10px] sm:text-xs">{initials}</AvatarFallback>
+				</Avatar>
+			</DropdownMenu.Trigger>
 		<DropdownMenu.Content align="end" class="w-56">
 			<DropdownMenu.Label class="font-normal">
 				<div class="flex flex-col space-y-1">
@@ -56,18 +61,19 @@
 			<DropdownMenu.Group>
 				<DropdownMenu.Item onclick={onOpenProfile}>
 					<User class="mr-2 size-4" />
-					<span>Profile</span>
+					<span>{m.profile()}</span>
 				</DropdownMenu.Item>
 				<DropdownMenu.Item onclick={onOpenSettings}>
 					<Settings class="mr-2 size-4" />
-					<span>Settings</span>
+					<span>{m.settings()}</span>
 				</DropdownMenu.Item>
 			</DropdownMenu.Group>
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item onclick={onSignOut} class="text-destructive focus:bg-destructive/10 focus:text-destructive">
 				<LogOut class="mr-2 size-4" />
-				<span>Log out</span>
+				<span>{m.log_out()}</span>
 			</DropdownMenu.Item>
 		</DropdownMenu.Content>
 	</DropdownMenu.Root>
+	</div>
 </header>

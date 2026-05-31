@@ -20,12 +20,15 @@
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio",
 		"auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes",
-		"test:e2e": "playwright install && playwright test"
+		"test:e2e": "playwright install && playwright test",
+		"machine-translate": "inlang machine translate --project project.inlang"
 	},
 	"devDependencies": {
 		"@better-auth/cli": "~1.4.21",
 		"@eslint/compat": "^2.0.4",
 		"@eslint/js": "^10.0.1",
+		"@inlang/cli": "^3.0.0",
+		"@inlang/paraglide-js": "^2.18.1",
 		"@internationalized/date": "^3.12.2",
 		"@lucide/svelte": "^1.17.0",
 		"@playwright/test": "^1.59.1",
@@ -78,6 +81,7 @@
 		"@fontsource-variable/inter": "^5.2.8",
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+		"@inlang/sdk": "^2.9.3",
 		"@tanstack/svelte-hotkeys": "^0.10.0",
 		"@tanstack/svelte-query": "^6.1.33",
 		"@tanstack/svelte-table": "^9.0.0-alpha.51",

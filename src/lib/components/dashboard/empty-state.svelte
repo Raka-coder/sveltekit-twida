@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from '$paraglide/messages.js';
 	import Inbox from '@lucide/svelte/icons/inbox';
 
 	let {
@@ -9,11 +10,11 @@
 
 	const messages = $derived(
 		({
-			all: { heading: 'No tasks yet', desc: 'Add your first task above to get started.' },
-			pending: { heading: 'No pending tasks', desc: 'All caught up! Add new tasks or create some.' },
+			all: { heading: m.no_tasks_yet(), desc: m.no_tasks_desc() },
+			pending: { heading: m.no_pending(), desc: m.no_pending_desc() },
 			completed: {
-				heading: 'No completed tasks',
-				desc: 'Start checking off tasks to see them here.'
+				heading: m.no_completed(),
+				desc: m.no_completed_desc()
 			}
 		} as const)[filterStatus]
 	);
