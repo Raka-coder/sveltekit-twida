@@ -66,6 +66,32 @@ export const actions: Actions = {
 		return { success: true };
 	},
 
+	completeAll: async (event) => {
+		if (!event.locals.user) return fail(401, { message: 'Unauthorized' });
+
+		await db
+			.update(task)
+			.set({ completed: true })
+			.where(eq(task.userId, event.locals.user.id));
+
+		return { success: true };
+	},
+
+	deleteAll: async (event) => {
+		if (!event.locals.user) return fail(401, { message: 'Unauthorized' });
+
+		await db.delete(task).where(eq(task.userId, event.locals.user.id));
+
+		return { success: true };
+	},
+
+	signOut: async (event) => {
+		await auth.api.signOut({
+			headers: event.request.headers
+		});
+		return { success: true };
+	},
+
 	updateName: async (event) => {
 		if (!event.locals.user) return fail(401, { message: 'Unauthorized' });
 

@@ -1,61 +1,32 @@
 <script lang="ts">
+	import * as Collapsible from '$lib/components/ui/collapsible';
 	import * as Sidebar from '$lib/components/ui/sidebar';
-	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
-	import LayoutDashboard from '@lucide/svelte/icons/layout-dashboard';
-	import CheckCheck from '@lucide/svelte/icons/check-check';
-	import ListTodo from '@lucide/svelte/icons/list-todo';
-	import Clock from '@lucide/svelte/icons/clock';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
-	import LogOut from '@lucide/svelte/icons/log-out';
-	import type { SidebarGroupItem } from '$lib/components/ui/sidebar/types.js';
+	import ListChecks from '@lucide/svelte/icons/list-checks';
+	import Tag from '@lucide/svelte/icons/tag';
 
 	let {
+		email,
 		filterStatus = $bindable('all'),
-		filtersOpen = $bindable(true),
-		email
+		filtersOpen = $bindable(true)
 	}: {
+		email: string;
 		filterStatus: 'all' | 'pending' | 'completed';
 		filtersOpen: boolean;
-		email: string;
 	} = $props();
-
-	const initials = $derived(
-		email
-			.split('@')[0]
-			.slice(0, 2)
-			.toUpperCase()
-	);
-
-	const navItems: SidebarGroupItem[] = [
-		{ title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard, isActive: true }
-	];
-
-	const filterItems = [
-		{ title: 'All Tasks', value: 'all' as const, icon: ListTodo },
-		{ title: 'Pending', value: 'pending' as const, icon: Clock },
-		{ title: 'Completed', value: 'completed' as const, icon: CheckCheck }
-	];
-
-	function setFilter(value: 'all' | 'pending' | 'completed') {
-		filterStatus = value;
-	}
 </script>
 
-<Sidebar.Root collapsible="icon">
-	<Sidebar.Header class="border-b p-4">
+<Sidebar.Root collapsible="icon" variant="sidebar">
+	<Sidebar.Header>
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
-				<Sidebar.MenuButton
-					size="lg"
-					class="cursor-default hover:bg-transparent data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-				>
-					<Avatar class="size-8">
-						<AvatarImage src="" alt={email} />
-						<AvatarFallback class="text-xs">{initials}</AvatarFallback>
-					</Avatar>
-					<div class="grid flex-1 text-left text-sm leading-tight">
-						<span class="truncate font-semibold">{email.split('@')[0]}</span>
-						<span class="truncate text-xs text-muted-foreground">{email}</span>
+				<Sidebar.MenuButton size="lg" class="gap-3">
+					<div class="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-md shrink-0">
+						<ListChecks class="size-4" />
+					</div>
+					<div class="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
+						<span class="truncate font-semibold">Todo App</span>
+						<span class="truncate text-xs text-muted-foreground/60">{email}</span>
 					</div>
 				</Sidebar.MenuButton>
 			</Sidebar.MenuItem>
@@ -66,65 +37,64 @@
 		<Sidebar.Group>
 			<Sidebar.GroupLabel>Navigation</Sidebar.GroupLabel>
 			<Sidebar.Menu>
-				{#each navItems as item (item.title)}
-					<Sidebar.MenuItem>
-						<Sidebar.MenuButton isActive={item.isActive}>
-							{#if item.icon}
-								<item.icon />
-							{/if}
-							<span>{item.title}</span>
-						</Sidebar.MenuButton>
-					</Sidebar.MenuItem>
-				{/each}
+				<Sidebar.MenuItem>
+					<Sidebar.MenuButton isActive={true} tooltipContent="Dashboard">
+						<ListChecks class="size-4" />
+						<span class="group-data-[collapsible=icon]:hidden">Dashboard</span>
+					</Sidebar.MenuButton>
+				</Sidebar.MenuItem>
 			</Sidebar.Menu>
 		</Sidebar.Group>
 
 		<Sidebar.Group>
+			<Sidebar.GroupLabel>Organization</Sidebar.GroupLabel>
 			<Sidebar.Menu>
-				<Sidebar.MenuItem>
-					<Sidebar.MenuButton
-						onclick={() => filtersOpen = !filtersOpen}
-						class="flex w-full items-center justify-between"
-					>
-						<span>Filters</span>
-						<ChevronDown
-							class="size-4 transition-transform {filtersOpen ? '' : '-rotate-90'}"
-						/>
-					</Sidebar.MenuButton>
-				</Sidebar.MenuItem>
+				<Collapsible.Root bind:open={filtersOpen} class="group/collapsible">
+					<Sidebar.MenuItem>
+						<Collapsible.Trigger>
+							{#snippet child({ props }: { props: Record<string, unknown> })}
+								<Sidebar.MenuButton {...props} tooltipContent="Filters">
+									<Tag class="size-4" />
+									<span class="group-data-[collapsible=icon]:hidden">Filters</span>
+									<ChevronDown
+										class="ml-auto size-3 transition-transform group-data-[state=open]/collapsible:rotate-180 group-data-[collapsible=icon]:hidden"
+									/>
+								</Sidebar.MenuButton>
+							{/snippet}
+						</Collapsible.Trigger>
+						<Collapsible.Content>
+							<Sidebar.MenuSub>
+								<Sidebar.MenuSubItem>
+									<Sidebar.MenuSubButton
+										isActive={filterStatus === 'all'}
+										onclick={() => filterStatus = 'all'}
+									>
+										All Tasks
+									</Sidebar.MenuSubButton>
+								</Sidebar.MenuSubItem>
+								<Sidebar.MenuSubItem>
+									<Sidebar.MenuSubButton
+										isActive={filterStatus === 'pending'}
+										onclick={() => filterStatus = 'pending'}
+									>
+										Pending
+									</Sidebar.MenuSubButton>
+								</Sidebar.MenuSubItem>
+								<Sidebar.MenuSubItem>
+									<Sidebar.MenuSubButton
+										isActive={filterStatus === 'completed'}
+										onclick={() => filterStatus = 'completed'}
+									>
+										Completed
+									</Sidebar.MenuSubButton>
+								</Sidebar.MenuSubItem>
+							</Sidebar.MenuSub>
+						</Collapsible.Content>
+					</Sidebar.MenuItem>
+				</Collapsible.Root>
 			</Sidebar.Menu>
-			{#if filtersOpen}
-				<Sidebar.Menu>
-					{#each filterItems as item (item.value)}
-						<Sidebar.MenuItem>
-							<Sidebar.MenuButton
-								onclick={() => setFilter(item.value)}
-								isActive={filterStatus === item.value}
-							>
-								<item.icon></item.icon>
-								<span>{item.title}</span>
-							</Sidebar.MenuButton>
-						</Sidebar.MenuItem>
-					{/each}
-				</Sidebar.Menu>
-			{/if}
 		</Sidebar.Group>
 	</Sidebar.Content>
 
-	<Sidebar.Footer class="border-t p-4">
-		<Sidebar.Menu>
-			<Sidebar.MenuItem>
-				<Sidebar.MenuButton
-					onclick={async () => {
-						await fetch('/api/auth/sign-out', { method: 'POST' });
-						window.location.href = '/login';
-					}}
-					class="text-destructive hover:bg-destructive/10 hover:text-destructive"
-				>
-					<LogOut class="size-4" />
-					<span>Logout</span>
-				</Sidebar.MenuButton>
-			</Sidebar.MenuItem>
-		</Sidebar.Menu>
-	</Sidebar.Footer>
+	<Sidebar.Rail />
 </Sidebar.Root>
