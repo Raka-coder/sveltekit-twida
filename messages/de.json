@@ -78,5 +78,6 @@
   "or": "oder",
   "has_account": "Bereits ein Konto?",
   "login_link": "Anmelden",
-  "create_account": "Konto Erstellen"
+  "create_account": "Konto Erstellen",
+  "continue_with_github": "Mit GitHub fortfahren"
 }
