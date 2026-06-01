@@ -12,5 +12,5 @@
 </svelte:head>
 
 <AuthCard badge={m.register_title()} title={m.register_title()} subtitle={m.register_subtitle()} gradientSide="right">
-	<RegisterForm {form} />
+	<RegisterForm {form} errors={form?.errors} values={form?.values} />
 </AuthCard>

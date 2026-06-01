@@ -1,4 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
+import * as m from '$paraglide/messages';
 import type { Actions, PageServerLoad } from './$types';
 import { auth } from '$lib/server/auth';
 import { APIError } from 'better-auth/api';
@@ -10,11 +11,29 @@ export const load: PageServerLoad = (event) => {
 	return {};
 };
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const actions: Actions = {
 	signInEmail: async (event) => {
 		const formData = await event.request.formData();
-		const email = formData.get('email')?.toString() ?? '';
+		const email = formData.get('email')?.toString().trim() ?? '';
 		const password = formData.get('password')?.toString() ?? '';
+
+		const errors: { email?: string; password?: string } = {};
+
+		if (!email) {
+			errors.email = m.email_required();
+		} else if (!emailRegex.test(email)) {
+			errors.email = m.invalid_email();
+		}
+
+		if (!password) {
+			errors.password = m.password_required();
+		}
+
+		if (Object.keys(errors).length > 0) {
+			return fail(400, { errors, values: { email } });
+		}
 
 		try {
 			await auth.api.signInEmail({
