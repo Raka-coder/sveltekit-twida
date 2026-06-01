@@ -9,10 +9,14 @@
 
 	let {
 		form,
-		error
+		error,
+		errors,
+		values
 	}: {
 		form: { message?: string } | null;
 		error?: string;
+		errors?: { email?: string; password?: string };
+		values?: { email?: string };
 	} = $props();
 
 	let showPassword = $state(false);
@@ -27,24 +31,31 @@
 			name="email"
 			placeholder="nama@email.com"
 			required
+			value={values?.email ?? ''}
+			aria-invalid={errors?.email ? 'true' : undefined}
 			class="input-underline w-full"
 		/>
+		{#if errors?.email}
+			<p class="mt-1 text-xs text-destructive">{errors.email}</p>
+		{/if}
 	</div>
 	<div class="relative">
 		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="password">{m.password()}</label>
 		<div class="relative">
 			<input
 				id="password"
-				type={showPassword ? "text" : "password"}
+				type={showPassword ? 'text' : 'password'}
 				name="password"
 				placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
 				required
+				aria-invalid={errors?.password ? 'true' : undefined}
 				class="input-underline w-full pr-10"
 			/>
 			<button
 				type="button"
+				aria-label={showPassword ? 'Hide password' : 'Show password'}
 				class="absolute right-0 top-1/2 -translate-y-1/2 text-muted-foreground/50 transition hover:text-primary"
-				onclick={() => showPassword = !showPassword}
+				onclick={() => (showPassword = !showPassword)}
 			>
 				{#if showPassword}
 					<EyeOff class="size-4" />
@@ -53,6 +64,9 @@
 				{/if}
 			</button>
 		</div>
+		{#if errors?.password}
+			<p class="mt-1 text-xs text-destructive">{errors.password}</p>
+		{/if}
 	</div>
 	{#if error}
 		<p class="text-xs text-destructive">{error}</p>

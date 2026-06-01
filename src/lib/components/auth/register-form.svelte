@@ -3,14 +3,22 @@
 	import { enhance } from '$app/forms';
 	import { resolveRoute } from '$app/paths';
 	import { Button } from '$lib/components/ui/button';
+	import Eye from '@lucide/svelte/icons/eye';
+	import EyeOff from '@lucide/svelte/icons/eye-off';
 
 	let {
 		form,
-		error
+		error,
+		errors,
+		values
 	}: {
 		form: { message?: string } | null;
 		error?: string;
+		errors?: { name?: string; email?: string; password?: string };
+		values?: { name?: string; email?: string };
 	} = $props();
+
+	let showPassword = $state(false);
 </script>
 
 <form method="post" action="?/signUpEmail" use:enhance class="flex flex-col gap-6">
@@ -21,8 +29,13 @@
 			name="name"
 			placeholder="Nama lengkap"
 			required
+			value={values?.name ?? ''}
+			aria-invalid={errors?.name ? 'true' : undefined}
 			class="input-underline w-full"
 		/>
+		{#if errors?.name}
+			<p class="mt-1 text-xs text-destructive">{errors.name}</p>
+		{/if}
 	</div>
 	<div>
 		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="email">{m.email()}</label>
@@ -32,19 +45,42 @@
 			name="email"
 			placeholder="nama@email.com"
 			required
+			value={values?.email ?? ''}
+			aria-invalid={errors?.email ? 'true' : undefined}
 			class="input-underline w-full"
 		/>
+		{#if errors?.email}
+			<p class="mt-1 text-xs text-destructive">{errors.email}</p>
+		{/if}
 	</div>
-	<div>
+	<div class="relative">
 		<label class="mb-1.5 block text-xs font-medium text-muted-foreground" for="password">{m.password()}</label>
-		<input
-			id="password"
-			type="password"
-			name="password"
-			placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-			required
-			class="input-underline w-full"
-		/>
+		<div class="relative">
+			<input
+				id="password"
+				type={showPassword ? 'text' : 'password'}
+				name="password"
+				placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+				required
+				aria-invalid={errors?.password ? 'true' : undefined}
+				class="input-underline w-full pr-10"
+			/>
+			<button
+				type="button"
+				aria-label={showPassword ? 'Hide password' : 'Show password'}
+				class="absolute right-0 top-1/2 -translate-y-1/2 text-muted-foreground/50 transition hover:text-primary"
+				onclick={() => (showPassword = !showPassword)}
+			>
+				{#if showPassword}
+					<EyeOff class="size-4" />
+				{:else}
+					<Eye class="size-4" />
+				{/if}
+			</button>
+		</div>
+		{#if errors?.password}
+			<p class="mt-1 text-xs text-destructive">{errors.password}</p>
+		{/if}
 	</div>
 	{#if error}
 		<p class="text-xs text-destructive">{error}</p>

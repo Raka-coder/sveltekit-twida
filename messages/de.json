@@ -60,6 +60,10 @@
   "name_label": "Name",
   "name_placeholder": "Dein Name",
   "name_minlength": "Name muss mindestens 2 Zeichen lang sein",
+  "name_required": "Name ist erforderlich",
+  "email_required": "E-Mail ist erforderlich",
+  "invalid_email": "Bitte gib eine gültige E-Mail-Adresse ein",
+  "password_required": "Passwort ist erforderlich",
   "failed_update": "Profil konnte nicht aktualisiert werden",
   "unexpected_error": "Ein unerwarteter Fehler ist aufgetreten",
   "profile_updated": "Profil aktualisiert! Seite wird neu geladen...",
@@ -95,5 +99,6 @@
   "hero_secondary_cta": "Sieh, wie es funktioniert",
   "features_section_label": "§ 02 — Die Funktionen",
   "features_section_caption": "Alles, was du brauchst, nichts, was du nicht brauchst.",
-  "footer_tagline": "Mit Sorgfalt gemacht, in Bandung."
+  "footer_tagline": "Mit Sorgfalt gemacht, in Bandung.",
+  "continue_with_github": "Mit GitHub fortfahren"
 }

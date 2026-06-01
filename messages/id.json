@@ -60,6 +60,10 @@
   "name_label": "Nama",
   "name_placeholder": "Nama kamu",
   "name_minlength": "Nama minimal 2 karakter",
+  "name_required": "Nama wajib diisi",
+  "email_required": "Email wajib diisi",
+  "invalid_email": "Masukkan alamat email yang valid",
+  "password_required": "Kata sandi wajib diisi",
   "failed_update": "Gagal memperbarui profil",
   "unexpected_error": "Terjadi kesalahan yang tidak terduga",
   "profile_updated": "Profil diperbarui! Memuat ulang...",
@@ -95,5 +99,6 @@
   "hero_secondary_cta": "Lihat cara kerjanya",
   "features_section_label": "§ 02 — Fitur-fitur",
   "features_section_caption": "Semua yang kamu butuh, tanpa yang tidak perlu.",
-  "footer_tagline": "Dibuat dengan penuh perhatian, di Bandung."
+  "footer_tagline": "Dibuat dengan penuh perhatian, di Bandung.",
+  "continue_with_github": "Lanjutkan dengan GitHub"
 }
