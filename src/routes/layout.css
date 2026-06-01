@@ -2,8 +2,7 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
 @import "shadcn-svelte/tailwind.css";
-@import "@fontsource-variable/plus-jakarta-sans";
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/jetbrains-mono";
 
 
@@ -44,10 +43,10 @@
   --sidebar-accent-foreground: oklch(0.25 0.01 50);
   --sidebar-border: oklch(0.82 0.01 70);
   --sidebar-ring: oklch(0.505 0.145 35);
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  --font-serif: "Plus Jakarta Sans", serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-sans: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-serif: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
   --radius: 0.375rem;
   --tracking-normal: 0.01em;
 }
