@@ -78,5 +78,22 @@
   "or": "or",
   "has_account": "Already have an account?",
   "login_link": "Sign In",
-  "create_account": "Create Account"
+  "create_account": "Create Account",
+  "navbar_features": "Features",
+  "landing_features_title": "Features that work for you",
+  "landing_features_subtitle": "Everything you need to organize your tasks, all in one place.",
+  "feature_auth_title": "Secure Authentication",
+  "feature_auth_desc": "Sign in safely with email or social providers.",
+  "feature_crud_title": "Manage Your Tasks",
+  "feature_crud_desc": "Create, edit, complete, and delete with ease.",
+  "feature_isolate_title": "Private Workspace",
+  "feature_isolate_desc": "Your tasks are yours alone — fully isolated per user.",
+  "feature_ui_title": "Modern Interface",
+  "feature_ui_desc": "Clean, responsive, and built with Svelte 5.",
+  "landing_footer_text": "Built with Svelte 5 and SvelteKit.",
+  "hero_label": "Todo App — Vol. 02",
+  "hero_secondary_cta": "See how it works",
+  "features_section_label": "§ 02 — The Features",
+  "features_section_caption": "Everything you need, nothing you don't.",
+  "footer_tagline": "Made with care, in Bandung."
 }

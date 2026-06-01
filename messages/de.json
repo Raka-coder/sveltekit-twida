@@ -78,5 +78,22 @@
   "or": "oder",
   "has_account": "Bereits ein Konto?",
   "login_link": "Anmelden",
-  "create_account": "Konto Erstellen"
+  "create_account": "Konto Erstellen",
+  "navbar_features": "Funktionen",
+  "landing_features_title": "Funktionen, die für dich arbeiten",
+  "landing_features_subtitle": "Alles, was du brauchst, um deine Aufgaben zu organisieren — an einem Ort.",
+  "feature_auth_title": "Sichere Authentifizierung",
+  "feature_auth_desc": "Melde dich sicher mit E-Mail oder sozialen Anbietern an.",
+  "feature_crud_title": "Aufgaben verwalten",
+  "feature_crud_desc": "Erstellen, bearbeiten, abschließen und löschen — ganz einfach.",
+  "feature_isolate_title": "Privater Arbeitsbereich",
+  "feature_isolate_desc": "Deine Aufgaben gehören nur dir — vollständig isoliert pro Nutzer.",
+  "feature_ui_title": "Moderne Oberfläche",
+  "feature_ui_desc": "Sauber, responsiv und mit Svelte 5 gebaut.",
+  "landing_footer_text": "Gebaut mit Svelte 5 und SvelteKit.",
+  "hero_label": "Todo App — Vol. 02",
+  "hero_secondary_cta": "Sieh, wie es funktioniert",
+  "features_section_label": "§ 02 — Die Funktionen",
+  "features_section_caption": "Alles, was du brauchst, nichts, was du nicht brauchst.",
+  "footer_tagline": "Mit Sorgfalt gemacht, in Bandung."
 }

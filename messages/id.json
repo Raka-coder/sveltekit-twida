@@ -78,5 +78,22 @@
   "or": "atau",
   "has_account": "Sudah punya akun?",
   "login_link": "Masuk",
-  "create_account": "Buat Akun"
+  "create_account": "Buat Akun",
+  "navbar_features": "Fitur",
+  "landing_features_title": "Fitur yang bekerja untuk kamu",
+  "landing_features_subtitle": "Semua yang kamu butuhkan untuk mengatur tugas, di satu tempat.",
+  "feature_auth_title": "Autentikasi Aman",
+  "feature_auth_desc": "Masuk dengan aman lewat email atau penyedia sosial.",
+  "feature_crud_title": "Kelola Tugas",
+  "feature_crud_desc": "Buat, edit, selesaikan, dan hapus dengan mudah.",
+  "feature_isolate_title": "Ruang Kerja Pribadi",
+  "feature_isolate_desc": "Tugas kamu hanya milik kamu — terisolasi penuh per pengguna.",
+  "feature_ui_title": "Antarmuka Modern",
+  "feature_ui_desc": "Bersih, responsif, dan dibuat dengan Svelte 5.",
+  "landing_footer_text": "Dibuat dengan Svelte 5 dan SvelteKit.",
+  "hero_label": "Todo App — Vol. 02",
+  "hero_secondary_cta": "Lihat cara kerjanya",
+  "features_section_label": "§ 02 — Fitur-fitur",
+  "features_section_caption": "Semua yang kamu butuh, tanpa yang tidak perlu.",
+  "footer_tagline": "Dibuat dengan penuh perhatian, di Bandung."
 }
