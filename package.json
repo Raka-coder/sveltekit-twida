@@ -87,5 +87,9 @@
 		"@tanstack/svelte-query": "^6.1.33",
 		"@tanstack/svelte-table": "^9.0.0-alpha.51",
 		"@tanstack/svelte-virtual": "^3.13.26"
+	},
+	"overrides": {
+		"cookie": "0.7.0",
+		"@types/cookie": "^0.6.0"
 	}
 }
