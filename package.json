@@ -19,12 +19,11 @@
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio",
-		"auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes",
+		"auth:schema": "npx better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes",
 		"test:e2e": "playwright install && playwright test",
 		"machine-translate": "inlang machine translate --project project.inlang"
 	},
 	"devDependencies": {
-		"@better-auth/cli": "~1.4.22",
 		"@eslint/compat": "^2.0.4",
 		"@eslint/js": "^10.0.1",
 		"@inlang/cli": "^3.0.0",
@@ -92,10 +91,6 @@
 		"cookie": "0.7.0",
 		"@types/cookie": "^0.6.0",
 		"esbuild": ">=0.24.3",
-		"lodash": ">=4.17.24",
-		"@better-auth/cli": {
-			"better-auth": "^1.6.2",
-			"drizzle-orm": ">=0.45.2"
-		}
+		"lodash": ">=4.17.24"
 	}
 }
